@@ -31,6 +31,8 @@ jobs:
         run: php artisan serve --no-reload &
       - name: Clear cache
         run: php artisan config:clear
+      - name: Check Chrome version
+        run: /usr/bin/chromium-browser --version
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest
       - name: Upload Screenshots
