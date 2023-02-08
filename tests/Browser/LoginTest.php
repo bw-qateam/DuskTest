@@ -114,8 +114,8 @@ class LoginTest extends DuskTestCase
             // login > profile > logout
             $browser->maximize() // ->resize(768, 1024)
                     ->visit('/login')
-                    ->assertPathIs('/login');
-//                     ->storeSource('Src_001');
+                    ->assertPathIs('/login')
+                    ->storeSource('Src_001');
 //                     ->assertSee('Forgot your password?');
 //                     ->typeSlowly('email', $user->email);
 //                     ->typeSlowly('password', 'password')
