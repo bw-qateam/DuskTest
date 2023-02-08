@@ -38,7 +38,7 @@ jobs:
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
       - name: Check file exists
-        run: test -e Src_001.txt && echo file exists || echo file not found
+        run: test -e ./tests/Browser/source/Src_001.txt && echo file exists || echo file not found
       - name: Page source
         run: cat ./tests/Browser/source/Src_001.txt
       - name: Upload Screenshots
