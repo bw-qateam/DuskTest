@@ -1,9 +1,17 @@
 name: CI
 on: [push]
 jobs:
+
+  phpunit:
+    name: PHPUnit
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: nathanheffley/laravel-phpunit-action@master
  
   dusk-php:
     runs-on: ubuntu-latest
+    needs: phpunit
     env:
       APP_URL: "http://127.0.0.1:8000"
       DB_USERNAME: root
