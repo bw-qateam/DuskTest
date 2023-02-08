@@ -9,7 +9,7 @@ jobs:
       DB_USERNAME: root
       DB_PASSWORD: root
       MAIL_MAILER: log
-      TEST_VAR: Testing 123
+      TEST_VAR1: Testing 123
     steps:
       - uses: actions/checkout@v3
       - name: Prepare The Environment
@@ -37,7 +37,7 @@ jobs:
       - name: Check Chrome version again
         run: /usr/bin/chromium-browser --version
       - name: Test env var
-        run: echo "$TEST_VAR"
+        run: echo "$TEST_VAR1, ${{ env.TEST_VAR }"
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
       - name: Check file exists
