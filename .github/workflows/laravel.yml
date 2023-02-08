@@ -1,6 +1,10 @@
 name: CI
 on: [push]
 jobs:
+  job1: echo aloha
+  
+  job2:
+    needs: job1
  
   dusk-php:
     runs-on: ubuntu-latest
