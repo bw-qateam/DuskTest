@@ -21,19 +21,6 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Generate Application Key
         run: php artisan key:generate
-      - name: Update package index
-        run: |
-          sudo apt-get update
-          sudo apt upgrade
-      - name: Install wget & check version
-        run: |
-          sudo apt install wget
-          wget --version
-      - name: Download & install Chrome
-        run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb
-          sudo apt-get install -f
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver
       - name: Ensure the ChromeDriver binaries are executable
@@ -50,6 +37,8 @@ jobs:
         run: /usr/bin/chromium-browser --version
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest
+      - name: Page source
+        run: cat ./tests/Browser/source/Src_001.txt
       - name: Upload Screenshots
         if: failure()
         uses: actions/upload-artifact@v2
