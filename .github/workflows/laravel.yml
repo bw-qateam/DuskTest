@@ -23,6 +23,8 @@ jobs:
         run: php artisan key:generate
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver
+      - name: Ensure the ChromeDriver binaries are executable
+        run: chmod -R 0755 vendor/laravel/dusk/bin/
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
       - name: Run Laravel Server
