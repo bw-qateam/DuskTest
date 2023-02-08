@@ -1,21 +1,6 @@
 name: CI
 on: [push]
 jobs:
-  job1: 
- 
-  dusk-php:
-    runs-on: ubuntu-latest
-    env:
-      APP_URL: "http://127.0.0.1:8000"
-      DB_USERNAME: root
-      DB_PASSWORD: root
-      MAIL_MAILER: log
-    steps:
-      - name: Helo
-        run: echo aloha
-  
-  job2:
-    needs: job1
  
   dusk-php:
     runs-on: ubuntu-latest
@@ -68,3 +53,10 @@ jobs:
         with:
           name: console
           path: tests/Browser/console
+  
+  job2:
+    runs-on: ubuntu-latest
+    needs: dusk-php
+    steps:
+      - name: Helo
+        run: echo aloha
