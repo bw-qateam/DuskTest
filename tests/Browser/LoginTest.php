@@ -114,8 +114,8 @@ class LoginTest extends DuskTestCase
             // login > profile > logout
             $browser->maximize() // ->resize(768, 1024)
                     ->visit('/login')
-                    ->assertPathIs('/login');
-//                     ->typeSlowly('email', $user->email)
+                    ->assertPathIs('/login')
+                    ->typeSlowly('email', $user->email);
 //                     ->typeSlowly('password', 'password')
 //                     // ->responsiveScreenshots('R_' . $screenshot_name . '_001_' . time())
 //                     ->screenshot($screenshot_name . '_001_' . time());
