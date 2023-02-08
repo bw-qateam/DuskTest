@@ -37,7 +37,7 @@ jobs:
       - name: Check Chrome version again
         run: /usr/bin/chromium-browser --version
       - name: Test env var
-        run: echo "$TEST_VAR1, ${{ env.TEST_VAR }}"
+        run: echo "$TEST_VAR1 ${{ env.TEST_VAR }}"
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
       - name: Check file exists
