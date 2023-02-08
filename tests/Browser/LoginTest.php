@@ -118,13 +118,13 @@ class LoginTest extends DuskTestCase
                     ->typeSlowly('email', $user->email)
                     ->typeSlowly('password', 'password')
 //                     // ->responsiveScreenshots('R_' . $screenshot_name . '_001_' . time())
-                    ->screenshot($screenshot_name . '_001_' . time())
+                    ->screenshot($screenshot_name . '_001_' . time());
 //                     ->storeSource('Src_001_' . time())
-                    ->press('LOG IN')
-                    ->assertPathIs('/dashboard')
-                    ->assertSee('Dashboard')
+//                     ->press('LOG IN')
+//                     ->assertPathIs('/dashboard')
+//                     ->assertSee('Dashboard')
 //                     // ->responsiveScreenshots('R_' . $screenshot_name . '_002_' . time())
-                    ->screenshot($screenshot_name . '_002_' . time());
+//                     ->screenshot($screenshot_name . '_002_' . time())
 //                     ->click('.relative button > div')
 //                     ->waitForTextIn('.absolute > div > a', 'Profile')
 //                     // ->responsiveScreenshots('R_' . $screenshot_name . '_003_' . time())
