@@ -33,7 +33,7 @@ jobs:
         run: /usr/bin/chromium-browser --version
       - name: Install snap version of Chrome
         run: |
-          systemctl start snapd.service
+          sudo systemctl start snapd.service
           sudo snap install chromium
           sudo apt remove chromium-browser
       - name: Clear cache
