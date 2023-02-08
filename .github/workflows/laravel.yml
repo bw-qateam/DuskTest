@@ -27,6 +27,8 @@ jobs:
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
+      - name: Clear cache
+        run: php artisan config:clear
       - name: Run Dusk Tests
         run: php artisan dusk:chrome --filter LoginTest
       - name: Upload Screenshots
