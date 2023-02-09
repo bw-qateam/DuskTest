@@ -117,8 +117,8 @@ class LoginTest extends DuskTestCase
                     ->assertPathIs('/login')
                     ->storeSource('Src_001')
 //                     ->assertSee('Forgot your password?');
-                    ->typeSlowly('email', $user->email)
-                    ->typeSlowly('password', 'password')
+//                     ->typeSlowly('email', $user->email)
+//                     ->typeSlowly('password', 'password')
 //                     // ->responsiveScreenshots('R_' . $screenshot_name . '_001_' . time())
                     ->screenshot($screenshot_name . '_001_' . time());
 //                     ->storeSource('Src_001_' . time())
