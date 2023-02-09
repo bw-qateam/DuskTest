@@ -73,6 +73,8 @@ jobs:
         run: test -e ./vendor/bin/phpunit && echo file exists || echo file not found
       - name: PHPUnit
         run: ./vendor/bin/phpunit --do-not-cache-result
+      - name: Clear cache
+        run: php artisan cache:clear
       - name: Artisan test
         run: php artisan test
           
