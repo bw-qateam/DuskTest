@@ -39,10 +39,11 @@ jobs:
       - name: Check Laravel version
         run: php artisan --version
       - name: Install breeze
+        run: composer require laravel/breeze --dev
+      - name: Install blade
         run: |
-          composer require laravel/breeze --dev
           php artisan breeze:install
-          echo "blade" | php artisan breeze:install
+          echo "0" | php artisan breeze:install
       - name: DB Migrate
         run: php artisan migrate
       - name: Clear cache
