@@ -72,9 +72,9 @@ jobs:
       - name: Check PHPUnit file exists
         run: test -e ./vendor/bin/phpunit && echo file exists || echo file not found
       - name: PHPUnit
-        run: ./vendor/bin/phpunit --do-not-cache-result
+        run: ./vendor/bin/phpunit --do-not-cache-result --log-junit=tests/Unit
       - name: Artisan test
-        run: php artisan test
+        run: php artisan test --no-cache
           
       #- name: Yii PHPUnit
         # You may pin to the exact commit or the version.
