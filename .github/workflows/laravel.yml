@@ -72,7 +72,7 @@ jobs:
       - name: Check PHPUnit file exists
         run: test -e ./vendor/bin/phpunit && echo file exists || echo file not found
       - name: PHPUnit
-        run: ./vendor/bin/phpunit
+        run: ./vendor/bin/phpunit --do-not-cache-result
       - name: Artisan test
         run: php artisan test
           
