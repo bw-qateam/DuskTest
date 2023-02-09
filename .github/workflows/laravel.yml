@@ -38,6 +38,10 @@ jobs:
         run: /usr/bin/chromium-browser --version
       - name: Check Laravel version
         run: php artisan --version
+      - name: Install breeze
+        run: |
+          composer require laravel/breeze --dev
+          php artisan breeze:install
       - name: DB Migrate
         run: php artisan migrate
       - name: Clear cache
