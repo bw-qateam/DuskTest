@@ -69,11 +69,13 @@ jobs:
         with:
           name: console
           path: tests/Browser/console
+      - name: PHPUnit
+        run: vendor/bin/phpunit
           
-      - name: Yii PHPUnit
+      #- name: Yii PHPUnit
         # You may pin to the exact commit or the version.
         # uses: inquid/yii-phpunit-action@0af32e0897a0c0258686a00159e2d572f4fb547e
-        uses: inquid/yii-phpunit-action@v0.2.0
+        #uses: inquid/yii-phpunit-action@v0.2.0
           
      # - name: Laravel PHPUnit
         # You may pin to the exact commit or the version.
