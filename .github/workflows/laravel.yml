@@ -74,7 +74,7 @@ jobs:
       - name: PHPUnit
         run: ./vendor/bin/phpunit --do-not-cache-result --log-junit=tests/Unit
       - name: Artisan test
-        run: php artisan test --no-cache
+        run: php artisan test
           
       #- name: Yii PHPUnit
         # You may pin to the exact commit or the version.
