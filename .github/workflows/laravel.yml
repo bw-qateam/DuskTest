@@ -24,6 +24,10 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Generate Application Key
         run: php artisan key:generate
+      - name: Install npm
+        run: npm install
+      - name: Run npm
+        run: npm run dev
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
       - name: Ensure the ChromeDriver binaries are executable
@@ -38,8 +42,6 @@ jobs:
         run: php artisan migrate
       - name: Clear cache
         run: php artisan config:clear
-      - name: Run Server
-        run: npm run dev
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
       - name: Test env var
