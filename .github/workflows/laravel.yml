@@ -28,12 +28,16 @@ jobs:
         run: sudo chmod -R 0755 ./vendor/laravel/dusk/bin/
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
-      - name: Run Laravel Server
-        run: php artisan serve --no-reload &
       - name: Check Chrome version
         run: /usr/bin/chromium-browser --version
+      - name: Check Laravel version
+        run: php artisan --version
+      - name: DB Migrate
+        run: php artisan migrate
       - name: Clear cache
         run: php artisan config:clear
+      - name: Run Laravel Server
+        run: php artisan serve --no-reload &
       - name: Test env var
         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Run Dusk Tests
