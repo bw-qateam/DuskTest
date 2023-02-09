@@ -10,6 +10,7 @@ jobs:
       DB_PASSWORD: root
       MAIL_MAILER: log
       DB_DATABASE: dusk
+      DUSK_HEADLESS: true
       TEST_VAR1: Testing 123
     steps:
       - uses: actions/checkout@v3
