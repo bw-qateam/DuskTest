@@ -38,6 +38,8 @@ jobs:
         run: php artisan migrate
       - name: Clear cache
         run: php artisan config:clear
+      - name: Run Server
+        run: npm run dev
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
       - name: Test env var
