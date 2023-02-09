@@ -42,8 +42,7 @@ jobs:
         run: composer require laravel/breeze --dev
       - name: Install blade
         run: |
-          php artisan breeze:install
-          echo "0" | php artisan breeze:install
+          php artisan breeze:install blade
       - name: DB Migrate
         run: php artisan migrate
       - name: Clear cache
