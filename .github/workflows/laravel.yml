@@ -51,7 +51,7 @@ jobs:
         run: ./vendor/bin/phpunit --do-not-cache-result
       #- uses: php-actions/composer@v6 # or alternative dependency management
       - name: PHPStan
-      - uses: php-actions/phpstan@v2
+        uses: php-actions/phpstan@v2
         run: phpstan analyse ./vendor
       #- uses: php-actions/phpstan@v3
       #  with:
