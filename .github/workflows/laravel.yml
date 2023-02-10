@@ -50,10 +50,13 @@ jobs:
       - name: PHPUnit
         run: ./vendor/bin/phpunit --do-not-cache-result
       #- uses: php-actions/composer@v6 # or alternative dependency management
-      - uses: php-actions/phpstan@v3
-        with:
-          path: ./
-          memory_limit: -1
+      - name: PHPStan
+      - uses: php-actions/phpstan@v2
+        run: phpstan analyse ./vendor
+      #- uses: php-actions/phpstan@v3
+      #  with:
+      #    path: ./
+      #    memory_limit: -1
       - name: Test env var
         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Run Dusk Tests
