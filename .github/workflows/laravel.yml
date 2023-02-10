@@ -52,7 +52,7 @@ jobs:
       #- uses: php-actions/composer@v6 # or alternative dependency management
       - name: PHPStan
       #  uses: php-actions/phpstan@v2
-        run: phpstan analyse ./vendor
+        run: ./vendor/bin/phpstan analyse ./vendor
       #- uses: php-actions/phpstan@v3
       #  with:
       #    path: ./
