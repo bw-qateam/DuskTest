@@ -51,6 +51,8 @@ jobs:
         run: ./vendor/bin/phpunit --do-not-cache-result
       #- uses: php-actions/composer@v6 # or alternative dependency management
       - uses: php-actions/phpstan@v3
+        with:
+          path: ./
       - name: Test env var
         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Run Dusk Tests
