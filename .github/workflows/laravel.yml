@@ -14,6 +14,10 @@ jobs:
       TEST_VAR1: Testing 123
     steps:
       - uses: actions/checkout@v3
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit --do-not-cache-result
+      #- uses: php-actions/composer@v6 # or alternative dependency management
+      - uses: php-actions/phpstan@v3
       - name: Prepare The Environment
         run: cp .env.example .env
       - name: Create Database
@@ -26,8 +30,6 @@ jobs:
         run: php artisan key:generate
       - name: Install npm
         run: npm install
-      #- name: Run npm
-      #  run: npm run dev
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
       - name: Ensure the ChromeDriver binaries are executable
@@ -71,10 +73,10 @@ jobs:
           path: tests/Browser/console
       - name: Check PHPUnit file exists
         run: test -e ./vendor/bin/phpunit && echo file exists || echo file not found
-      - name: PHPUnit
-        run: ./vendor/bin/phpunit --do-not-cache-result
       - name: Clear cache
         run: php artisan cache:clear
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit --do-not-cache-result
       - name: Artisan test
         run: php artisan test
           
