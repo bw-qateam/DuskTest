@@ -54,7 +54,7 @@ jobs:
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
 #         run: ./vendor/bin/phpstan analyse ./vendor
-      - uses: php-actions/phpstan@v3
+        uses: php-actions/phpstan@v3
         with:
          path: ./tests
          memory_limit: -1
