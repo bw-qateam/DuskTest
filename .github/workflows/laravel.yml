@@ -87,17 +87,25 @@ jobs:
       - name: Artisan test
         run: php artisan test
       - name: Disable firewall
-        run: sudo ufw disable
-          
-      #- name: Yii PHPUnit
-        # You may pin to the exact commit or the version.
-        # uses: inquid/yii-phpunit-action@0af32e0897a0c0258686a00159e2d572f4fb547e
-        #uses: inquid/yii-phpunit-action@v0.2.0
-          
-     # - name: Laravel PHPUnit
-        # You may pin to the exact commit or the version.
-        # uses: nathanheffley/laravel-phpunit-action@1ac680fbc5f20621343f0d7ba450a02b807c576e
-        #uses: nathanheffley/laravel-phpunit-action@v0.1.0
+        run: sudo ufw disable     
+
+
+      - name: Wait for web server to start
+        run: |
+          timeout 15 bash -c "until curl -s http://localhost:8000; do sleep 5; done"
+
+      - name: OWASP ZAP Scan
+        uses: owasp/zap2docker-stable@v2.10.0
+        with:
+          target: http://localhost:8000/
+          zap_options: "-config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true -config scanner.attackOnStart=true -config view.mode=attack"
+
+      - name: Save ZAP Scan Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: zap-report
+          path: /zap/wrk/report.html
+        
   
   download:
     runs-on: ubuntu-latest
@@ -107,6 +115,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: screenshots
+          
+      - name: Download ZAP Scan Report
+        uses: actions/download-artifact@v3
+        with:
+          name: zap-report
+          path: /zap/wrk/report.html
       
       # BASIC FULL SCAN
       - name: ZAP Full Scan
