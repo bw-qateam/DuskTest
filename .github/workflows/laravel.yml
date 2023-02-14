@@ -105,11 +105,56 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: screenshots
-          
-      - name: ZAP Scan
+      
+      # BASIC FULL SCAN
+      - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.4.0
         with:
-          target: 'https://www.zaproxy.org/'
+          target: 'http://127.0.0.1:8000'
+          
+      # BASIC API SCAN
+      - name: ZAP API Scan
+        uses: zaproxy/action-api-scan@v0.1.1
+        with:
+          target: 'http://127.0.0.1:8000'
+          
+#   # ADVANCED FULL SCAN
+#   zap_full_scan:
+#     runs-on: ubuntu-latest
+#     name: Scan the web application
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#         with:
+#           ref: master
+#       - name: ZAP Scan
+#         uses: zaproxy/action-full-scan@v0.4.0
+#         with:
+#           token: ${{ secrets.OWASP_GITHUB_TOKEN }}
+#           docker_name: 'owasp/zap2docker-stable'
+#           target: 'https://www.zaproxy.org/'
+#           rules_file_name: '.zap/rules.tsv'
+#           cmd_options: '-a'
+          
+#   # ADVANCED API SCAN
+#   zap_api_scan:
+#     runs-on: ubuntu-latest
+#     name: Scan the web application (API)
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#         with:
+#           ref: master
+
+#       - name: ZAP Scan
+#         uses: zaproxy/action-api-scan@v0.1.1
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           docker_name: 'owasp/zap2docker-stable'
+#           format: openapi
+#           target: 'https://www.zaproxy.org/'
+#           rules_file_name: '.zap/rules.tsv'
+#           cmd_options: '-a'
           
 #   sonarqube:
 #     name: SonarQube Trigger
