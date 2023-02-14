@@ -110,15 +110,22 @@ jobs:
       
       # BASIC FULL SCAN
       - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.4.0
+        uses: zaproxy/action-full-scan@v2.0
         with:
-          target: 'http://127.0.0.1:8000'
+          target: http://127.0.0.1
+          zap-args: '-config api.disablekey=true -config api.port=8090'
+          report: true
+
+#       - name: ZAP Full Scan
+#         uses: zaproxy/action-full-scan@v0.4.0
+#         with:
+#           target: 'http://127.0.0.1:8000'
           
-      # BASIC API SCAN
-      - name: ZAP API Scan
-        uses: zaproxy/action-api-scan@v0.1.1
-        with:
-          target: 'http://127.0.0.1:8000'
+#       # BASIC API SCAN
+#       - name: ZAP API Scan
+#         uses: zaproxy/action-api-scan@v0.1.1
+#         with:
+#           target: 'http://127.0.0.1:8000'
           
 #   # ADVANCED FULL SCAN
 #   zap_full_scan:
