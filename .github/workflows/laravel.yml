@@ -90,21 +90,21 @@ jobs:
         run: sudo ufw disable     
 
 
-      - name: Wait for web server to start
-        run: |
-          timeout 15 bash -c "until curl -s http://localhost:8000; do sleep 5; done"
+#       - name: Wait for web server to start
+#         run: |
+#           timeout 15 bash -c "until curl -s http://localhost:8000; do sleep 5; done"
 
-      - name: OWASP ZAP Scan
-        uses: owasp/zap2docker-stable@v2.10.0
-        with:
-          target: http://localhost:8000/
-          zap_options: "-config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true -config scanner.attackOnStart=true -config view.mode=attack"
+#       - name: OWASP ZAP Scan
+#         uses: owasp/zap2docker-stable@v2.10.0
+#         with:
+#           target: http://localhost:8000/
+#           zap_options: "-config api.disablekey=true -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true -config scanner.attackOnStart=true -config view.mode=attack"
 
-      - name: Save ZAP Scan Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: zap-report
-          path: /zap/wrk/report.html
+#       - name: Save ZAP Scan Report
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: zap-report
+#           path: /zap/wrk/report.html
         
   
   download:
@@ -116,19 +116,25 @@ jobs:
         with:
           name: screenshots
           
+#       - name: Download ZAP Scan Report
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: zap-report
+#           path: /zap/wrk/report.html
+      
+      # BASIC FULL SCAN
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: 'http://127.0.0.1:8000'
+          zap-args: '-config api.disablekey=true -config api.port=8090'
+          report: true
+          
       - name: Download ZAP Scan Report
         uses: actions/download-artifact@v3
         with:
           name: zap-report
           path: /zap/wrk/report.html
-      
-      # BASIC FULL SCAN
-      - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v2.0
-        with:
-          target: http://127.0.0.1
-          zap-args: '-config api.disablekey=true -config api.port=8090'
-          report: true
 
 #       - name: ZAP Full Scan
 #         uses: zaproxy/action-full-scan@v0.4.0
