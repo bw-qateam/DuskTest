@@ -86,6 +86,8 @@ jobs:
       #  run: ./vendor/bin/phpunit --do-not-cache-result
       - name: Artisan test
         run: php artisan test
+      - name: Disable firewall
+        run: sudo ufw disable
           
       #- name: Yii PHPUnit
         # You may pin to the exact commit or the version.
@@ -110,13 +112,13 @@ jobs:
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.4.0
         with:
-          target: './tests'
+          target: 'http://127.0.0.1:8000'
           
       # BASIC API SCAN
       - name: ZAP API Scan
         uses: zaproxy/action-api-scan@v0.1.1
         with:
-          target: './tests'
+          target: 'http://127.0.0.1:8000'
           
 #   # ADVANCED FULL SCAN
 #   zap_full_scan:
