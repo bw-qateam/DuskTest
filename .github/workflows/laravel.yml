@@ -95,8 +95,8 @@ jobs:
         with:
           target: 'http://127.0.0.1:8000'
           zap-args: '-config api.disablekey=true -config api.port=8090'
-          report: true
-          reportfilename: report.html
+#           report: true
+#           reportfilename: report.html
 
 
 #       - name: Wait for web server to start
