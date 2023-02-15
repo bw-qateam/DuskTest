@@ -57,7 +57,7 @@ jobs:
         uses: php-actions/phpstan@v3
         with:
          path: ./tests
-         memory_limit: -1
+         memory_limit: 1G
       - name: Test env var
         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Run Dusk Tests
