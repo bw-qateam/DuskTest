@@ -86,8 +86,8 @@ jobs:
       #  run: ./vendor/bin/phpunit --do-not-cache-result
       - name: Artisan test
         run: php artisan test
-      - name: Disable firewall
-        run: sudo ufw disable     
+#       - name: Disable firewall
+#         run: sudo ufw disable     
         
       # BASIC FULL SCAN
       - name: ZAP Full Scan
@@ -125,10 +125,10 @@ jobs:
         with:
           name: screenshots
           
-#       - name: Download ZAP Scan Report
-#         uses: actions/download-artifact@v3
-#         with:
-#           name: zap-report
+      - name: Download ZAP Scan Report
+        uses: actions/download-artifact@v3
+        with:
+          name: zap-scan #zap-report
 #           path: /zap/wrk/report.html
         
   
@@ -215,11 +215,3 @@ jobs:
 #       with:
 #         host: ${{ secrets.SONARQUBE_HOST }}
 #         login: ${{ secrets.SONARQUBE_TOKEN }}
-  
-  #php-unit:
-    #runs-on: ubuntu-latest
-    #needs: download
-    #steps:
-      #- name: PHPUnit
-        #run: ./vendor/bin/phpunit
-        #run: phpunit --filter LoginTest tests/Unit/LoginTest.php
