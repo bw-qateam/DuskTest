@@ -1,4 +1,5 @@
 name: CI
+run-name: DuskTest 🚀
 on: [push]
 jobs:
  
