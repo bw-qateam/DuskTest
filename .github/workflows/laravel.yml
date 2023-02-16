@@ -95,8 +95,8 @@ jobs:
         with:
           target: 'http://127.0.0.1:8000'
 #           zap-args: '-config api.disablekey=true -config api.port=8090'
-#           report: true
-#           reportfilename: report.html
+          report: true
+          reportfilename: report.html
 #       - name: Upload ZAP Report
 #         #if: failure()
 #         uses: actions/upload-artifact@v3
@@ -137,10 +137,10 @@ jobs:
         with:
           name: screenshots
           
-      - name: Download ZAP Scan Report
-        uses: actions/download-artifact@v3
-        with:
-          name: zap-report
+#       - name: Download ZAP Scan Report
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: zap-report
 #           path: /zap/wrk/report.html
         
   
