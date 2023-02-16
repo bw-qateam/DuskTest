@@ -97,18 +97,18 @@ jobs:
 #           zap-args: '-config api.disablekey=true -config api.port=8090'
 #           report: true
 #           reportfilename: report.html
-      - name: Upload ZAP Report
-        #if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: zap-report
-          path: tests/Browser/screenshots
+#       - name: Upload ZAP Report
+#         #if: failure()
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: zap-report
+#           path: tests/Browser/screenshots
           
-      # BASIC API SCAN
-      - name: ZAP API Scan
-        uses: zaproxy/action-api-scan@v0.1.1
-        with:
-          target: 'http://127.0.0.1:8000'
+#       # BASIC API SCAN
+#       - name: ZAP API Scan
+#         uses: zaproxy/action-api-scan@v0.1.1
+#         with:
+#           target: 'http://127.0.0.1:8000'
 
 
 #       - name: Wait for web server to start
