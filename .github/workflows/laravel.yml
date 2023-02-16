@@ -86,8 +86,6 @@ jobs:
       #  run: ./vendor/bin/phpunit --do-not-cache-result
       - name: Artisan test
         run: php artisan test
-#       - name: Disable firewall
-#         run: sudo ufw disable     
           
       # BASIC API SCAN
       - name: ZAP API Scan
