@@ -59,6 +59,7 @@ jobs:
         with:
          path: ./tests
          memory_limit: 1G
+         level: 1
       - name: Test env var
         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Run Dusk Tests
