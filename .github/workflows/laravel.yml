@@ -12,7 +12,7 @@ jobs:
       MAIL_MAILER: log
       DB_DATABASE: dusk
       DUSK_HEADLESS: true
-      TEST_VAR1: Testing 123
+#       TEST_VAR1: Testing 123
     steps:
       - uses: actions/checkout@v3
       - name: Prepare The Environment
@@ -48,8 +48,15 @@ jobs:
         run: php artisan config:clear
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
-      - name: PHPUnit
-        run: ./vendor/bin/phpunit --do-not-cache-result
+
+      - name: PHPUnit tests
+        uses: php-actions/phpunit@v3
+        with:
+#           configuration: "custom/path/to/phpunit.xml"
+          memory_limit: "1G"
+        
+#       - name: PHPUnit
+#         run: ./vendor/bin/phpunit --do-not-cache-result
       #- uses: php-actions/composer@v6 # or alternative dependency management
       - name: PHPStan
 #         uses: php-actions/phpstan@v2
@@ -60,14 +67,14 @@ jobs:
          path: ./tests
          memory_limit: 1G
          level: 1
-      - name: Test env var
-        run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
+#       - name: Test env var
+#         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
-      - name: Check file exists
-        run: test -e ./tests/Browser/source/Src_001.txt && echo file exists || echo file not found
-      - name: Page source
-        run: cat ./tests/Browser/source/Src_001.txt
+#       - name: Check file exists
+#         run: test -e ./tests/Browser/source/Src_001.txt && echo file exists || echo file not found
+#       - name: Page source
+#         run: cat ./tests/Browser/source/Src_001.txt
       - name: Upload Screenshots
         #if: failure()
         uses: actions/upload-artifact@v3
@@ -80,12 +87,10 @@ jobs:
         with:
           name: console
           path: tests/Browser/console
-      - name: Check PHPUnit file exists
-        run: test -e ./vendor/bin/phpunit && echo file exists || echo file not found
+#       - name: Check PHPUnit file exists
+#         run: test -e ./vendor/bin/phpunit && echo file exists || echo file not found
       - name: Clear cache
         run: php artisan cache:clear
-      #- name: PHPUnit
-      #  run: ./vendor/bin/phpunit --do-not-cache-result
       - name: Artisan test
         run: php artisan test
           
@@ -94,7 +99,6 @@ jobs:
         uses: zaproxy/action-api-scan@v0.1.1
         with:
           target: 'http://127.0.0.1:8000'
-#           allow_issue_writing: false
           issue_title: API Scan Report
         
       # BASIC FULL SCAN
@@ -102,7 +106,6 @@ jobs:
         uses: zaproxy/action-full-scan@v0.4.0
         with:
           target: 'http://127.0.0.1:8000'
-#           allow_issue_writing: false
           issue_title: Full Scan Report
         
   
@@ -119,31 +122,6 @@ jobs:
 #     runs-on: ubuntu-latest
 #     needs: dusk-php
 #     steps:
-#       # BASIC FULL SCAN
-#       - name: ZAP Full Scan
-#         uses: zaproxy/action-full-scan@v0.4.0
-#         with:
-#           target: 'http://127.0.0.1:8000'
-#           zap-args: '-config api.disablekey=true -config api.port=8090'
-#           report: true
-#           reportfilename: report.html
-          
-#       - name: Download ZAP Scan Report
-#         uses: actions/download-artifact@v3
-#         with:
-#           name: zap-report
-#           path: /zap/wrk/report.html
-
-#       - name: ZAP Full Scan
-#         uses: zaproxy/action-full-scan@v0.4.0
-#         with:
-#           target: 'http://127.0.0.1:8000'
-          
-#       # BASIC API SCAN
-#       - name: ZAP API Scan
-#         uses: zaproxy/action-api-scan@v0.1.1
-#         with:
-#           target: 'http://127.0.0.1:8000'
           
 #   # ADVANCED FULL SCAN
 #   zap_full_scan:
