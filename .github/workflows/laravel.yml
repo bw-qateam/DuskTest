@@ -98,15 +98,16 @@ jobs:
          path: ./tests
          memory_limit: 1G
          level: 1
-         error_format: json #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
-         generate_baseline: tests/Browser/phpstan.json
+#          error_format: json #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
+         args: --error-format=json > phpstan.json
+#          generate_baseline: tests/Browser/phpstan.json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
         uses: actions/upload-artifact@v3
         with:
           name: phpstan
-          path: tests/Browser/phpstan
+          path: phpstan.json
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
 #       - name: Check file exists
