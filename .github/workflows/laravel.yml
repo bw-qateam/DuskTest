@@ -98,8 +98,8 @@ jobs:
          path: ./tests
          memory_limit: 1G
          level: 1
-         error_format: table #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
-         generate_baseline: tests/Browser/phpstan
+         error_format: json #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
+         generate_baseline: tests/Browser/phpstan.json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
