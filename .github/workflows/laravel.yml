@@ -39,16 +39,16 @@ jobs:
         run: php artisan --version      
 #       - name: Setup Firefox
 #         uses: mozilla/setup-firefox@v1
-      - name: Install Firefox driver
-        run: |
-          composer require --dev derekmd/laravel-dusk-firefox
-          expect -c '
-            set timeout 10
-            spawn php artisan dusk:install-firefox --with-chrome
-            expect "Overwrite file /home/runner/work/DuskTest/DuskTest/tests/DuskTestCase.php? (yes/no) [no]:"
-            send "y"
-            expect eof
-          '
+#       - name: Install Firefox driver
+#         run: |
+#           composer require --dev derekmd/laravel-dusk-firefox
+#           expect -c '
+#             set timeout 10
+#             spawn php artisan dusk:install-firefox --with-chrome
+#             expect "Overwrite file /home/runner/work/DuskTest/DuskTest/tests/DuskTestCase.php? (yes/no) [no]:"
+#             send "y"
+#             expect eof
+#           '
       - name: Install breeze
         run: composer require laravel/breeze --dev
       - name: Install blade
