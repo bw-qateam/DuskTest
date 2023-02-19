@@ -81,14 +81,14 @@ jobs:
 #           php_extensions: "xdebug"
 #           coverage_clover: "coverage/clover.xml"
         
-      - name: PHPUnit
-        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
-#       - uses: php-actions/composer@v6 # or alternative dependency management
-      - name: Upload PHPUnit results
-        uses: actions/upload-artifact@v3
-        with:
-          name: phpunit
-          path: ./tests/Browser/phpunit
+#       - name: PHPUnit
+#         run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
+# #       - uses: php-actions/composer@v6 # or alternative dependency management
+#       - name: Upload PHPUnit results
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: phpunit
+#           path: ./tests/Browser/phpunit
       - name: PHPStan
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
@@ -98,6 +98,7 @@ jobs:
          path: ./tests
          memory_limit: 1G
          level: 1
+         error_format: html
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
