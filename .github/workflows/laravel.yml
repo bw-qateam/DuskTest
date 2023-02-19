@@ -66,6 +66,11 @@ jobs:
       - name: PHPUnit
         run: ./vendor/bin/phpunit --do-not-cache-result
 #       - uses: php-actions/composer@v6 # or alternative dependency management
+      - name: Upload PHPUnit results
+        uses: actions/upload-artifact@v3
+        with:
+          name: phpunit
+          path: ./tests/Browser/phpunit
       - name: PHPStan
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
@@ -77,12 +82,18 @@ jobs:
          level: 1
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
+      - name: Upload PHPStan results
+        uses: actions/upload-artifact@v3
+        with:
+          name: phpstan
+          path: ./tests/Browser/phpstan
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
 #       - name: Check file exists
 #         run: test -e ./tests/Browser/source/Src_001.txt && echo file exists || echo file not found
 #       - name: Page source
 #         run: cat ./tests/Browser/source/Src_001.txt
+
       - name: Upload Screenshots
         #if: failure()
         uses: actions/upload-artifact@v3
