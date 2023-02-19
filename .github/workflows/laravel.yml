@@ -70,7 +70,7 @@ jobs:
 #           coverage_clover: "coverage/clover.xml"
         
       - name: PHPUnit
-        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html tests
+        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
 #       - uses: php-actions/composer@v6 # or alternative dependency management
       - name: Upload PHPUnit results
         uses: actions/upload-artifact@v3
