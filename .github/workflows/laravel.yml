@@ -37,8 +37,8 @@ jobs:
         run: /usr/bin/chromium-browser --version
       - name: Check Laravel version
         run: php artisan --version      
-      - name: Setup Firefox
-        uses: mozilla/setup-firefox@v1
+#       - name: Setup Firefox
+#         uses: mozilla/setup-firefox@v1
       - name: Install Firefox driver
         run: |
           composer require --dev derekmd/laravel-dusk-firefox
