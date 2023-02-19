@@ -49,8 +49,8 @@ jobs:
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
 
-      - name: PHPUnit tests
-        uses: php-actions/phpunit@v3
+#       - name: PHPUnit tests
+#         uses: php-actions/phpunit@v3
 #         env:
 #           XDEBUG_MODE: coverage
 #         with:
@@ -59,13 +59,13 @@ jobs:
 #           php_extensions: xdebug
 #           args: tests --coverage-clover ./coverage.xml
          
-        with:
-#           configuration: "custom/path/to/phpunit.xml"
-          memory_limit: "1G"
+#         with:
+# #           configuration: "custom/path/to/phpunit.xml"
+#           memory_limit: "1G"
         
-#       - name: PHPUnit
-#         run: ./vendor/bin/phpunit --do-not-cache-result
-      #- uses: php-actions/composer@v6 # or alternative dependency management
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit --do-not-cache-result
+#       - uses: php-actions/composer@v6 # or alternative dependency management
       - name: PHPStan
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
