@@ -36,7 +36,13 @@ jobs:
       - name: Check Chrome version
         run: /usr/bin/chromium-browser --version
       - name: Check Laravel version
-        run: php artisan --version
+        run: php artisan --version      
+      - name: Setup Firefox
+        uses: mozilla/setup-firefox@v1
+      - name: Install Firefox driver
+        run: |
+          composer require --dev derekmd/laravel-dusk-firefox
+          php artisan dusk:install-firefox --with-chrome && y          
       - name: Install breeze
         run: composer require laravel/breeze --dev
       - name: Install blade
