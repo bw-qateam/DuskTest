@@ -81,22 +81,24 @@ jobs:
 #           php_extensions: "xdebug"
 #           coverage_clover: "coverage/clover.xml"
         
-#       - name: PHPUnit
-#         run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html tests/Browser/phpunit.html --filter=LoginTest tests
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
 # #       - uses: php-actions/composer@v6 # or alternative dependency management
 #       - name: Upload PHPUnit results
 #         uses: actions/upload-artifact@v3
 #         with:
 #           name: phpunit
 #           path: ./tests/Browser/phpunit.html
+      - name: Upload PHPUnit results
+        uses: actions/upload-artifact@v3
+        with:
+          name: phpunit
+          path: phpunit.html
       - name: List down directory
         run: ls
       - name: Install PHPStan
         run: composer require --dev phpstan/phpstan
 #       - name: PHPStan
-#         uses: php-actions/phpstan@v3
-      - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json
 #         uses: php-actions/phpstan@v3
 #         with:
 #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
@@ -105,6 +107,8 @@ jobs:
 #          memory_limit: 1G
 #          level: 1
 #          error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
@@ -157,14 +161,14 @@ jobs:
 #           issue_title: Full Scan Report
         
   
-  download:
-    runs-on: ubuntu-latest
-    needs: dusk-php
-    steps:
-      - name: Download screenshot
-        uses: actions/download-artifact@v3
-        with:
-          name: screenshots
+#   download:
+#     runs-on: ubuntu-latest
+#     needs: dusk-php
+#     steps:
+#       - name: Download screenshot
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: screenshots
 #       - name: Download PHPStan
 #         uses: actions/download-artifact@v3
 #         with:
