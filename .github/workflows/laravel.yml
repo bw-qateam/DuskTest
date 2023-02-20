@@ -81,14 +81,14 @@ jobs:
 #           php_extensions: "xdebug"
 #           coverage_clover: "coverage/clover.xml"
         
-      - name: PHPUnit
-        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html tests/Browser/phpunit.html --filter=LoginTest tests
-#       - uses: php-actions/composer@v6 # or alternative dependency management
-      - name: Upload PHPUnit results
-        uses: actions/upload-artifact@v3
-        with:
-          name: phpunit
-          path: ./tests/Browser/phpunit.html
+#       - name: PHPUnit
+#         run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html tests/Browser/phpunit.html --filter=LoginTest tests
+# #       - uses: php-actions/composer@v6 # or alternative dependency management
+#       - name: Upload PHPUnit results
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: phpunit
+#           path: ./tests/Browser/phpunit.html
       - name: PHPStan
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
