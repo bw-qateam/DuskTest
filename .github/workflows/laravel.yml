@@ -37,15 +37,15 @@ jobs:
         run: /usr/bin/chromium-browser --version
       - name: Check Laravel version
         run: php artisan --version      
-      - name: Setup Firefox
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox
+#       - name: Setup Firefox
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install -y firefox
 
-      - name: Install GeckoDriver
-        uses: mozilla/geckodriver/releases@v0.30.0
-        with:
-          filename: geckodriver-v0.30.0-linux64.tar.gz
+#       - name: Install GeckoDriver
+#         uses: mozilla/geckodriver/releases@v0.30.0
+#         with:
+#           filename: geckodriver-v0.30.0-linux64.tar.gz
           
 #         uses: mozilla/setup-firefox@v1
 #       - name: Install Firefox driver
@@ -57,6 +57,8 @@ jobs:
 #             expect "Overwrite file /home/runner/work/DuskTest/DuskTest/tests/DuskTestCase.php? (yes/no) [no]:"
 #             send "y"
 #             expect eof
+      - name: Install Firefox driver
+        run: php artisan dusk:firefox-driver
 #           '
       - name: Install breeze
         run: composer require laravel/breeze --dev
