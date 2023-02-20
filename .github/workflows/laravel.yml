@@ -81,27 +81,26 @@ jobs:
 #           php_extensions: "xdebug"
 #           coverage_clover: "coverage/clover.xml"
         
-#       - name: PHPUnit
-#         run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
-# #       - uses: php-actions/composer@v6 # or alternative dependency management
-#       - name: Upload PHPUnit results
-#         uses: actions/upload-artifact@v3
-#         with:
-#           name: phpunit
-#           path: ./tests/Browser/phpunit
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html tests/Browser/phpunit.html --filter=LoginTest tests
+#       - uses: php-actions/composer@v6 # or alternative dependency management
+      - name: Upload PHPUnit results
+        uses: actions/upload-artifact@v3
+        with:
+          name: phpunit
+          path: ./tests/Browser/phpunit.html
       - name: PHPStan
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
 #         run: ./vendor/bin/phpstan analyse ./vendor
         uses: php-actions/phpstan@v3
         with:
-         args: --memory-limit=1G --level=1 --no-progress --error-format=checkstyle > tests/Browser/phpstan-report.xml tests
+         args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > tests/Browser/phpstan-report.json tests
 #          path: ./tests
 #          memory_limit: 1G
 #          level: 1
 # #          error_format: json #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
 #          args: --error-format=json
-# #          generate_baseline: tests/Browser/phpstan.json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
