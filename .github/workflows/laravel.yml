@@ -93,10 +93,9 @@ jobs:
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
 #         run: ./vendor/bin/phpstan analyse ./vendor
-        uses: php-actions/phpstan@v1
+        uses: php-actions/phpstan@v3
         with:
-         args: --memory-limit=1G --no-progress --error-format=checkstyle > tests/Browser/phpstan-report.xml tests
-
+         args: --memory-limit=1G --level=1 --no-progress --error-format=checkstyle > tests/Browser/phpstan-report.xml tests
 #          path: ./tests
 #          memory_limit: 1G
 #          level: 1
