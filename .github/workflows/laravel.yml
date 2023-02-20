@@ -95,7 +95,7 @@ jobs:
 #         run: ./vendor/bin/phpstan analyse ./vendor
         uses: php-actions/phpstan@v1
         with:
-         args: --memory-limit=1G --no-progress --error-format=checkstyle > tests/Browser/phpstan-report.xml
+         args: --memory-limit=1G --no-progress --error-format=checkstyle > tests/Browser/phpstan-report.xml tests
 
 #          path: ./tests
 #          memory_limit: 1G
