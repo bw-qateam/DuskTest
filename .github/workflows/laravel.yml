@@ -97,8 +97,8 @@ jobs:
 #         run: ./vendor/bin/phpstan analyse tests
         uses: php-actions/phpstan@v3
         with:
-         args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
-#          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
+#          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
+         args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
 #          path: ./tests
 #          memory_limit: 1G
 #          level: 1
@@ -106,11 +106,11 @@ jobs:
 #          args: --error-format=json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
-#       - name: Upload PHPStan results
-#         uses: actions/upload-artifact@v3
-#         with:
-#           name: phpstan
-#           path: reports/phpstan-report.json
+      - name: Upload PHPStan results
+        uses: actions/upload-artifact@v3
+        with:
+          name: phpstan
+          path: reports/phpstan-report.json
       - name: List down directory
         run: ls
       - name: Run Dusk Tests
@@ -139,21 +139,21 @@ jobs:
       - name: Artisan test
         run: php artisan test
           
-      # BASIC API SCAN
-      - name: ZAP API Scan
-        uses: zaproxy/action-api-scan@v0.1.1
-        with:
-          target: 'http://127.0.0.1:8000'
-#           report_name: zap_api_scan
-          issue_title: API Scan Report
+#       # BASIC API SCAN
+#       - name: ZAP API Scan
+#         uses: zaproxy/action-api-scan@v0.1.1
+#         with:
+#           target: 'http://127.0.0.1:8000'
+# #           report_name: zap_api_scan
+#           issue_title: API Scan Report
         
-      # BASIC FULL SCAN
-      - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.4.0
-        with:
-          target: 'http://127.0.0.1:8000'
-#           report_name: zap_full_scan
-          issue_title: Full Scan Report
+#       # BASIC FULL SCAN
+#       - name: ZAP Full Scan
+#         uses: zaproxy/action-full-scan@v0.4.0
+#         with:
+#           target: 'http://127.0.0.1:8000'
+# #           report_name: zap_full_scan
+#           issue_title: Full Scan Report
         
   
   download:
@@ -164,10 +164,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: screenshots
-      - name: Download PHPStan
-        uses: actions/download-artifact@v3
-        with:
-          name: phpstan     
+#       - name: Download PHPStan
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: phpstan
+#       - name: Download PHPUnit
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: phpunit
   
 #   owasp:      
 #     runs-on: ubuntu-latest
