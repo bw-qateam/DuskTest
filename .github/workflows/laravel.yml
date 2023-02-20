@@ -94,16 +94,16 @@ jobs:
       - name: PHPStan
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
-#         run: ./vendor/bin/phpstan analyse tests
-        uses: php-actions/phpstan@v3
-        with:
-#          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
-         args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
-#          path: ./tests
-#          memory_limit: 1G
-#          level: 1
-# #          error_format: json #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
-#          args: --error-format=json
+        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json
+#         uses: php-actions/phpstan@v3
+#         with:
+# #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
+#          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
+# #          path: ./tests
+# #          memory_limit: 1G
+# #          level: 1
+# # #          error_format: json #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
+# #          args: --error-format=json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
