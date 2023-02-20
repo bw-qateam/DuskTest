@@ -37,7 +37,16 @@ jobs:
         run: /usr/bin/chromium-browser --version
       - name: Check Laravel version
         run: php artisan --version      
-#       - name: Setup Firefox
+      - name: Setup Firefox
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+
+      - name: Install GeckoDriver
+        uses: mozilla/geckodriver/releases@v0.30.0
+        with:
+          filename: geckodriver-v0.30.0-linux64.tar.gz
+          
 #         uses: mozilla/setup-firefox@v1
 #       - name: Install Firefox driver
 #         run: |
