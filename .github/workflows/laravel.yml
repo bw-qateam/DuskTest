@@ -93,21 +93,23 @@ jobs:
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
 #         run: ./vendor/bin/phpstan analyse ./vendor
-        uses: php-actions/phpstan@v3
+        uses: php-actions/phpstan@v1
         with:
-         path: ./tests
-         memory_limit: 1G
-         level: 1
-#          error_format: json #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
-         args: --error-format=json
-#          generate_baseline: tests/Browser/phpstan.json
+         args: --memory-limit=1G --no-progress --error-format=checkstyle > reports/phpstan-report.xml
+
+#          path: ./tests
+#          memory_limit: 1G
+#          level: 1
+# #          error_format: json #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
+#          args: --error-format=json
+# #          generate_baseline: tests/Browser/phpstan.json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
         uses: actions/upload-artifact@v3
         with:
           name: phpstan
-          path: ./tests
+          path: ./reports
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
 #       - name: Check file exists
