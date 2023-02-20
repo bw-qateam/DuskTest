@@ -92,10 +92,10 @@ jobs:
       - name: PHPStan
 #         uses: php-actions/phpstan@v2
 #       - name: Run PHPStan
-#         run: ./vendor/bin/phpstan analyse ./vendor
+#         run: ./vendor/bin/phpstan analyse tests
         uses: php-actions/phpstan@v3
         with:
-         args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > phpstan-report.json tests
+         args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
 #          path: ./tests
 #          memory_limit: 1G
 #          level: 1
@@ -107,7 +107,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: phpstan
-          path: phpstan-report.json
+          path: reports/phpstan-report.json
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
 #       - name: Check file exists
