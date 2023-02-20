@@ -95,7 +95,7 @@ jobs:
 #         run: ./vendor/bin/phpstan analyse ./vendor
         uses: php-actions/phpstan@v1
         with:
-         args: --memory-limit=1G --no-progress --error-format=checkstyle > reports/phpstan-report.xml
+         args: --memory-limit=1G --no-progress --error-format=checkstyle > tests/Browser/phpstan-report.xml
 
 #          path: ./tests
 #          memory_limit: 1G
@@ -109,7 +109,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: phpstan
-          path: ./reports
+          path: ./tests/Browser/phpstan-report.xml
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
 #       - name: Check file exists
@@ -160,7 +160,11 @@ jobs:
       - name: Download screenshot
         uses: actions/download-artifact@v3
         with:
-          name: screenshots        
+          name: screenshots
+      - name: Download PHPStan
+        uses: actions/download-artifact@v3
+        with:
+          name: phpstan     
   
 #   owasp:      
 #     runs-on: ubuntu-latest
