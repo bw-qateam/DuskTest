@@ -72,7 +72,7 @@ jobs:
 #          level: 1
 #          error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > phpstan.json
+        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=5 --no-progress --error-format=prettyJson > phpstan.json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
@@ -113,70 +113,75 @@ jobs:
       - name: Clear cache
         run: php artisan cache:clear
       - name: Artisan test
-        run: php artisan test
+        run: php artisan test > pa_test.html
+        
+        
+        
+        
+        
+        
+        
           
-      # BASIC API SCAN
-      - name: ZAP API Scan
-        uses: zaproxy/action-api-scan@v0.1.1
-        with:
-          target: 'http://127.0.0.1:8000'
-#       - name: Create reports directory
-#         run: mkdir reports
-#       - name: List down directory
-#         run: ls
-#       - name: Rename ZAP API Report
-#         run: mv zap_scan.zip reports/zap_scan_api.zip
-#       - name: List down directory
-#         run: ls
-      - name: Upload ZAP API Report - HTML
-        #if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: zap_api_html
-          path: report_html.html #reports/zap_scan_api.zip
-      - name: Upload ZAP API Report - MD
-        #if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: zap_api_md
-          path: report_md.md
-#       - name: Upload ZAP API Report2
+#       # BASIC API SCAN
+#       - name: ZAP API Scan
+#         uses: zaproxy/action-api-scan@v0.1.1
+#         with:
+#           target: 'http://127.0.0.1:8000'
+# #       - name: Create reports directory
+# #         run: mkdir reports
+# #       - name: List down directory
+# #         run: ls
+# #       - name: Rename ZAP API Report
+# #         run: mv zap_scan.zip reports/zap_scan_api.zip
+# #       - name: List down directory
+# #         run: ls
+#       - name: Upload ZAP API Report - HTML
 #         #if: failure()
 #         uses: actions/upload-artifact@v3
 #         with:
-#           name: zap_api2
-#           path: report_html.html
-        
-      # BASIC FULL SCAN
-      - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.4.0
-        with:
-          target: 'http://127.0.0.1:8000'
-#       - name: List down directory
-#         run: ls
-#       - name: Rename ZAP Full Report
-#         run: mv zap_scan.zip reports/zap_scan_full.zip
-#       - name: List down directory
-#         run: ls
-      - name: Upload ZAP Full Report - HTML
-        #if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: zap_full_html
-          path: report_html.html #reports/zap_scan_api.zip
-      - name: Upload ZAP Full Report -MD
-        #if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: zap_full_md
-          path: report_md.md
-#       - name: Upload ZAP Full Report
+#           name: zap_api_html
+#           path: report_html.html #reports/zap_scan_api.zip
+#       - name: Upload ZAP API Report - MD
 #         #if: failure()
 #         uses: actions/upload-artifact@v3
 #         with:
-#           name: zap_full
-#           path: reports/zap_scan_full.zip
+#           name: zap_api_md
+#           path: report_md.md
+# #       - name: Upload ZAP API Report2
+# #         #if: failure()
+# #         uses: actions/upload-artifact@v3
+# #         with:
+# #           name: zap_api2
+# #           path: report_html.html
         
+#       # BASIC FULL SCAN
+#       - name: ZAP Full Scan
+#         uses: zaproxy/action-full-scan@v0.4.0
+#         with:
+#           target: 'http://127.0.0.1:8000'
+# #       - name: List down directory
+# #         run: ls
+# #       - name: Rename ZAP Full Report
+# #         run: mv zap_scan.zip reports/zap_scan_full.zip
+# #       - name: List down directory
+# #         run: ls
+#       - name: Upload ZAP Full Report - HTML
+#         #if: failure()
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: zap_full_html
+#           path: report_html.html #reports/zap_scan_api.zip
+#       - name: Upload ZAP Full Report -MD
+#         #if: failure()
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: zap_full_md
+#           path: report_md.md
+        
+  
+  
+  
+  
   
 #   download:
 #     runs-on: ubuntu-latest
