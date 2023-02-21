@@ -114,8 +114,8 @@ jobs:
         uses: zaproxy/action-api-scan@v0.1.1
         with:
           target: 'http://127.0.0.1:8000'
-      - name: Create reports directory
-        run: mkdir reports
+#       - name: Create reports directory
+#         run: mkdir reports
       - name: List down directory
         run: ls
       - name: Rename ZAP API Report
@@ -128,6 +128,12 @@ jobs:
         with:
           name: zap_api
           path: reports/zap_scan_api.zip
+      - name: Upload ZAP API Report2
+        #if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: zap_api2
+          path: report_html.html
         
       # BASIC FULL SCAN
       - name: ZAP Full Scan
