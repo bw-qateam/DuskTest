@@ -80,12 +80,12 @@ jobs:
         with:
           name: phpstan
           path: phpstan.json
-      - name: md table
-        uses: gazab/create-markdown-table@v1
-        id: create_table
-        with:
-          file: phpstan.json
-      - run: echo ${{ steps.create_table.outputs.table }}
+#       - name: md table
+#         uses: gazab/create-markdown-table@v1
+#         id: create_table
+#         with:
+#           file: phpstan.json
+#       - run: echo ${{ steps.create_table.outputs.table }}
 
       - name: List down directory
         run: ls
