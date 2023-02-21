@@ -100,15 +100,15 @@ jobs:
 #         with:
 #           name: phpunit
 #           path: ./tests/Browser/phpunit.html
-      - name: Upload PHPUnit results
-        uses: actions/upload-artifact@v3
-        with:
-          name: phpunit
-          path: phpunit.html
-      - name: List down directory
-        run: ls
-      - name: Install PHPStan
-        run: composer require --dev phpstan/phpstan
+#       - name: Upload PHPUnit results
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: phpunit
+#           path: phpunit.html
+#       - name: List down directory
+#         run: ls
+#       - name: Install PHPStan
+#         run: composer require --dev phpstan/phpstan
 #       - name: PHPStan
 #         uses: php-actions/phpstan@v3
 #         with:
