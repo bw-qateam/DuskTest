@@ -38,8 +38,8 @@ jobs:
       - name: Check Laravel version
         run: php artisan --version      
         
-#       - name: Install Firefox driver
-#         run: php artisan dusk:firefox-driver
+      - name: Install Firefox driver
+        run: php artisan dusk:firefox-driver
 #           '
       - name: Install breeze
         run: composer require laravel/breeze --dev
@@ -63,8 +63,8 @@ jobs:
           path: phpunit.html
 #       - name: List down directory
 #         run: ls
-#       - name: Install PHPStan
-#         run: composer require --dev phpstan/phpstan
+      - name: Install PHPStan
+        run: composer require --dev phpstan/phpstan
 #       - name: PHPStan
 #         uses: php-actions/phpstan@v3
 #         with:
@@ -98,12 +98,12 @@ jobs:
         with:
           name: screenshots
           path: tests/Browser/screenshots
-      - name: Upload Console Logs
-        #if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: console
-          path: tests/Browser/console
+#       - name: Upload Console Logs
+#         #if: failure()
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: console
+#           path: tests/Browser/console
 #       - name: Check PHPUnit file exists
 #         run: test -e ./vendor/bin/phpunit && echo file exists || echo file not found
       - name: Clear cache
@@ -111,21 +111,23 @@ jobs:
       - name: Artisan test
         run: php artisan test
           
-#       # BASIC API SCAN
-#       - name: ZAP API Scan
-#         uses: zaproxy/action-api-scan@v0.1.1
-#         with:
-#           target: 'http://127.0.0.1:8000'
-# #           report_name: zap_api_scan
-#           issue_title: API Scan Report
+      # BASIC API SCAN
+      - name: ZAP API Scan
+        uses: zaproxy/action-api-scan@v0.1.1
+        with:
+          target: 'http://127.0.0.1:8000'
+#           report_name: zap_api_scan
+          issue_title: API Scan Report
+      - name: Rename report
+        run: cp zap_scan.zip zap_scan_api.zip
         
-#       # BASIC FULL SCAN
-#       - name: ZAP Full Scan
-#         uses: zaproxy/action-full-scan@v0.4.0
-#         with:
-#           target: 'http://127.0.0.1:8000'
-# #           report_name: zap_full_scan
-#           issue_title: Full Scan Report
+      # BASIC FULL SCAN
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: 'http://127.0.0.1:8000'
+#           report_name: zap_full_scan
+          issue_title: Full Scan Report
         
   
 #   download:
