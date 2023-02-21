@@ -122,12 +122,18 @@ jobs:
 #         run: mv zap_scan.zip reports/zap_scan_api.zip
 #       - name: List down directory
 #         run: ls
-      - name: Upload ZAP API Report
+      - name: Upload ZAP API Report - HTML
         #if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: zap_api
+          name: zap_api_html
           path: report_html.html #reports/zap_scan_api.zip
+      - name: Upload ZAP API Report - MD
+        #if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: zap_full_md
+          path: report_md.md
 #       - name: Upload ZAP API Report2
 #         #if: failure()
 #         uses: actions/upload-artifact@v3
@@ -146,12 +152,18 @@ jobs:
 #         run: mv zap_scan.zip reports/zap_scan_full.zip
 #       - name: List down directory
 #         run: ls
-      - name: Upload ZAP Full Report
+      - name: Upload ZAP Full Report - HTML
         #if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: zap_full
+          name: zap_full_html
           path: report_html.html #reports/zap_scan_api.zip
+      - name: Upload ZAP Full Report -MD
+        #if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: zap_full_md
+          path: report_md.md
 #       - name: Upload ZAP Full Report
 #         #if: failure()
 #         uses: actions/upload-artifact@v3
