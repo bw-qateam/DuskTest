@@ -116,18 +116,20 @@ jobs:
         uses: zaproxy/action-api-scan@v0.1.1
         with:
           target: 'http://127.0.0.1:8000'
-#           report_name: zap_api_scan
-          issue_title: API Scan Report
-      - name: Rename report
+      - name: Rename ZAP API Report
         run: cp zap_scan.zip zap_scan_api.zip
+      - name: Upload ZAP API Report
+        #if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: zap_api
+          path: zap_scan_api.zip
         
       # BASIC FULL SCAN
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.4.0
         with:
           target: 'http://127.0.0.1:8000'
-#           report_name: zap_full_scan
-          issue_title: Full Scan Report
         
   
 #   download:
