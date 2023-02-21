@@ -131,7 +131,7 @@ jobs:
         #if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: zap_full_md
+          name: zap_api_md
           path: report_md.md
 #       - name: Upload ZAP API Report2
 #         #if: failure()
