@@ -33,10 +33,10 @@ jobs:
         run: sudo chmod -R 0755 ./vendor/laravel/dusk/bin/
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
-      - name: Check Chrome version
-        run: /usr/bin/chromium-browser --version
-      - name: Check Laravel version
-        run: php artisan --version      
+#       - name: Check Chrome version
+#         run: /usr/bin/chromium-browser --version
+#       - name: Check Laravel version
+#         run: php artisan --version      
         
       - name: Install Firefox driver
         run: php artisan dusk:firefox-driver
@@ -55,7 +55,6 @@ jobs:
         
       - name: PHPUnit
         run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
-# #       - uses: php-actions/composer@v6 # or alternative dependency management
       - name: Upload PHPUnit results
         uses: actions/upload-artifact@v3
         with:
@@ -90,12 +89,12 @@ jobs:
 #       - name: Page source
 #         run: cat ./tests/Browser/source/Src_001.txt
 
-      - name: Upload Screenshots
-        #if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: screenshots
-          path: tests/Browser/screenshots
+#       - name: Upload Screenshots
+#         #if: failure()
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: screenshots
+#           path: tests/Browser/screenshots
 #       - name: Upload Console Logs
 #         #if: failure()
 #         uses: actions/upload-artifact@v3
@@ -180,14 +179,6 @@ jobs:
 #         uses: actions/download-artifact@v3
 #         with:
 #           name: screenshots
-#       - name: Download PHPStan
-#         uses: actions/download-artifact@v3
-#         with:
-#           name: phpstan
-#       - name: Download PHPUnit
-#         uses: actions/download-artifact@v3
-#         with:
-#           name: phpunit
   
 #   owasp:      
 #     runs-on: ubuntu-latest
