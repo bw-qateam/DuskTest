@@ -114,10 +114,12 @@ jobs:
         uses: zaproxy/action-api-scan@v0.1.1
         with:
           target: 'http://127.0.0.1:8000'
+      - name: Create reports directory
+        run: mkdir reports
       - name: List down directory
         run: ls
       - name: Rename ZAP API Report
-        run: cp zap_scan.zip zap_scan_api.zip
+        run: mv zap_scan.zip reports/zap_scan_api.zip
       - name: List down directory
         run: ls
       - name: Upload ZAP API Report
@@ -125,7 +127,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: zap_api
-          path: zap_scan_api.zip
+          path: reports/zap_scan_api.zip
         
       # BASIC FULL SCAN
       - name: ZAP Full Scan
@@ -135,7 +137,7 @@ jobs:
       - name: List down directory
         run: ls
       - name: Rename ZAP Full Report
-        run: cp zap_scan.zip zap_scan_full.zip
+        run: mv zap_scan.zip reports/zap_scan_full.zip
       - name: List down directory
         run: ls
       - name: Upload ZAP Full Report
@@ -143,7 +145,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: zap_full
-          path: zap_scan_full.zip
+          path: reports/zap_scan_full.zip
         
   
 #   download:
