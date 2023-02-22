@@ -72,7 +72,7 @@ jobs:
 #          level: 1
 #          error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=5 --no-progress --error-format=json > phpstan.json
+        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=5 --no-progress --error-format=prettyJson > phpstan.json
 #       - name: Test env var
 #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
       - name: Upload PHPStan results
@@ -87,8 +87,8 @@ jobs:
 #           file: phpstan.json
 #       - run: echo ${{ steps.create_table.outputs.table }}
 
-      - name: List down directory
-        run: ls
+#       - name: List down directory
+#         run: ls
       - name: Run Dusk Tests
         run: sudo php artisan dusk:chrome --filter LoginTest 
 #       - name: Check file exists
@@ -114,6 +114,12 @@ jobs:
         run: php artisan cache:clear
       - name: Artisan test
         run: php artisan test > pa_test.html
+      - name: Upload Artisan Test
+        #if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: artisan
+          path: pa_test.html
         
         
         
