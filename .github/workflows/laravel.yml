@@ -128,7 +128,7 @@ jobs:
         with:
           target: |
             http://127.0.0.1:8000
-#            'https://minxpay.vercel.app/#/sign-in'
+            https://minxpay.vercel.app/#/sign-in
 #       - name: Create reports directory
 #         run: mkdir reports
 #       - name: List down directory
