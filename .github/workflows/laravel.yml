@@ -54,7 +54,7 @@ jobs:
         run: php artisan serve --no-reload &
         
       - name: PHPUnit
-        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
+        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html tests #--filter=LoginTest tests
       - name: Upload PHPUnit results
         uses: actions/upload-artifact@v3
         with:
@@ -90,18 +90,18 @@ jobs:
 #       - name: Page source
 #         run: cat ./tests/Browser/source/Src_001.txt
 
-#       - name: Upload Screenshots
-#         #if: failure()
-#         uses: actions/upload-artifact@v3
-#         with:
-#           name: screenshots
-#           path: tests/Browser/screenshots
-#       - name: Upload Console Logs
-#         #if: failure()
-#         uses: actions/upload-artifact@v3
-#         with:
-#           name: console
-#           path: tests/Browser/console
+      - name: Upload Screenshots
+        #if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots
+      - name: Upload Console Logs
+        #if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: console
+          path: tests/Browser/console
 #       - name: Check PHPUnit file exists
 #         run: test -e ./vendor/bin/phpunit && echo file exists || echo file not found
       - name: Clear cache
