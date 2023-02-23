@@ -127,7 +127,7 @@ jobs:
         uses: zaproxy/action-api-scan@v0.1.1
         with:
           target: |
-            'http://127.0.0.1:8000'
+            http://127.0.0.1:8000
 #            'https://minxpay.vercel.app/#/sign-in'
 #       - name: Create reports directory
 #         run: mkdir reports
