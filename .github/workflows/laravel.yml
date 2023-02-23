@@ -126,7 +126,9 @@ jobs:
       - name: ZAP API Scan
         uses: zaproxy/action-api-scan@v0.1.1
         with:
-          target: 'http://127.0.0.1:8000'
+          target: |
+            'http://127.0.0.1:8000'
+            'https://minxpay.vercel.app/#/sign-in'
 #       - name: Create reports directory
 #         run: mkdir reports
 #       - name: List down directory
@@ -158,7 +160,10 @@ jobs:
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.4.0
         with:
-          target: 'http://127.0.0.1:8000'
+          target: |
+            'http://127.0.0.1:8000'
+            'https://minxpay.vercel.app/#/sign-in'
+            
 #       - name: List down directory
 #         run: ls
 #       - name: Rename ZAP Full Report
