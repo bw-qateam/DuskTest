@@ -73,7 +73,7 @@ jobs:
 #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
           path: ./tests
           memory_limit: 1G
-          level: 1
+          level: 2
           error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
 #      - name: Run PHPStan
 #        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --xdebug --debug --no-progress --error-format=prettyJson > phpstan.json
