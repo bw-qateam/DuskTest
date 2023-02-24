@@ -70,8 +70,8 @@ jobs:
         uses: php-actions/phpstan@v3
         with:
 #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
-# #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
-# # #          path: ./tests
+#          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
+          path: ./tests
           memory_limit: 1G
           level: 2
           error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
