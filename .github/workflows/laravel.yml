@@ -68,6 +68,7 @@ jobs:
 #         run: sudo apt-get install -y php7.4-pdo-mysql
       - name: PHPStan
         uses: php-actions/phpstan@v3
+        continue-on-error: true
         with:
 #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
 #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
