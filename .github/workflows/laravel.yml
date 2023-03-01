@@ -12,7 +12,7 @@ jobs:
       MAIL_MAILER: log
       DB_DATABASE: dusk
       DUSK_HEADLESS: true
-#       TEST_VAR1: Testing 123
+##       TEST_VAR1: Testing 123
     steps:
       - uses: actions/checkout@v3
       - name: Prepare The Environment
