@@ -37,10 +37,10 @@ jobs:
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
         # run: ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
         
-#       - name: Check Chrome version
-#         run: /usr/bin/chromium-browser --version
-#       - name: Check Laravel version
-#         run: php artisan --version      
+      - name: Check Chrome version
+        run: /usr/bin/chromium-browser --version
+      - name: Check Laravel version
+        run: php artisan --version      
         
       - name: Install Firefox driver
         run: php artisan dusk:firefox-driver
