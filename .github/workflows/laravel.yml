@@ -27,12 +27,16 @@ jobs:
         run: php artisan key:generate
       - name: Install npm
         run: npm install
+      - name: Update composer
+        run: composer update
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
       - name: Ensure the ChromeDriver binaries are executable
         run: sudo chmod -R 0755 ./vendor/laravel/dusk/bin/
       - name: Start Chrome Driver
         run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+        # run: ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
+        
 #       - name: Check Chrome version
 #         run: /usr/bin/chromium-browser --version
 #       - name: Check Laravel version
