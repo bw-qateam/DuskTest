@@ -54,8 +54,8 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function chromeDriver()
     {
-        $driver_args = env("DUSK_HEADLESS") ? ['--disable-gpu', '--headless', '--window-size=1920,1080',] : 
-                                              ['--disable-gpu', '--window-size=1920,1080',];
+        $driver_args = env("DUSK_HEADLESS") ? ['--disable-gpu', '--headless', '--no-sandbox', '--window-size=1920,1080',] : 
+                                              ['--disable-gpu', '--no-sandbox', '--window-size=1920,1080',];
 
         $options = (new ChromeOptions)->addArguments($this->filterHeadlessArguments($driver_args));
 
@@ -80,8 +80,8 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function firefoxDriver()
     {
-        $driver_args = env("DUSK_HEADLESS") ? ['--headless', '--window-size=1920,1080',] : 
-                                              ['--window-size=1920,1080',];
+        $driver_args = env("DUSK_HEADLESS") ? ['--headless', '--no-sandbox', '--window-size=1920,1080',] : 
+                                              ['--no-sandbox', '--window-size=1920,1080',];
 
         $capabilities = DesiredCapabilities::firefox();
 
