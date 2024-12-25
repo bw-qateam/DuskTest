@@ -160,7 +160,7 @@ jobs:
         
       # BASIC FULL SCAN
       - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.4.0
+        uses: zaproxy/action-full-scan@v0.12.0
         with:
           target: http://127.0.0.1:8000
 #            https://minxpay.vercel.app/#/sign-in            
