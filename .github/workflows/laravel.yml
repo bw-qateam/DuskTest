@@ -29,6 +29,8 @@ jobs:
         run: npm install
       - name: Update composer
         run: composer update
+      - name: Install dusk
+        run: php artisan dusk:install        
       - name: Upgrade Chrome Driver
         run: php artisan dusk:chrome-driver --detect
       - name: Ensure the ChromeDriver binaries are executable
