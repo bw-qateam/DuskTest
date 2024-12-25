@@ -14,7 +14,7 @@ jobs:
       DUSK_HEADLESS: true
 ##       TEST_VAR1: Testing 123 #
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Prepare The Environment
         run: cp .env.example .env
       - name: Create Database
@@ -30,8 +30,8 @@ jobs:
       - name: Update composer
         run: composer update
       - name: Upgrade Chrome Driver
-        run: php artisan dusk:chrome-driver
-        # run: php artisan dusk:chrome-driver --detect
+        # run: php artisan dusk:chrome-driver
+        run: php artisan dusk:chrome-driver --detect
       - name: Ensure the ChromeDriver binaries are executable
         run: sudo chmod -R 0755 ./vendor/laravel/dusk/bin/
       - name: Start Chrome Driver
