@@ -30,13 +30,12 @@ jobs:
       - name: Update composer
         run: composer update
       - name: Upgrade Chrome Driver
-        # run: php artisan dusk:chrome-driver
         run: php artisan dusk:chrome-driver --detect
       - name: Ensure the ChromeDriver binaries are executable
         run: sudo chmod -R 0755 ./vendor/laravel/dusk/bin/
       - name: Start Chrome Driver
-        run: ./vendor/laravel/dusk/bin/chromedriver-linux &
-        # run: ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
+        # run: ./vendor/laravel/dusk/bin/chromedriver-linux &
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
         
       - name: Check Chrome version
         run: /usr/bin/chromium-browser --version
@@ -61,7 +60,7 @@ jobs:
 #       - name: PHPUnit
 #         run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
 #       - name: Upload PHPUnit results
-#         uses: actions/upload-artifact@v3
+#         uses: actions/upload-artifact@v4
 #         with:
 #           name: phpunit
 #           path: phpunit.html
@@ -85,7 +84,7 @@ jobs:
 # # #       - name: Test env var
 # # #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
 #       - name: Upload PHPStan results
-#         uses: actions/upload-artifact@v3
+#         uses: actions/upload-artifact@v4
 #         with:
 #           name: phpstan
 #           path: phpstan.json
@@ -101,13 +100,13 @@ jobs:
 
       - name: Upload Screenshots
         #if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: screenshots
           path: tests/Browser/screenshots
       - name: Upload Console Logs
         #if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: console
           path: tests/Browser/console
@@ -119,7 +118,7 @@ jobs:
         run: php artisan test > pa_test.html
       - name: Upload Artisan Test
         #if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: artisan
           path: pa_test.html
@@ -139,13 +138,13 @@ jobs:
 #            https://minxpay.vercel.app/#/sign-in
       - name: Upload ZAP API Report - HTML
         #if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zap_api_html
           path: report_html.html
       - name: Upload ZAP API Report - MD
         #if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zap_api_md
           path: report_md.md
@@ -158,13 +157,13 @@ jobs:
 #            https://minxpay.vercel.app/#/sign-in            
       - name: Upload ZAP Full Report - HTML
         #if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zap_full_html
           path: report_html.html
       - name: Upload ZAP Full Report -MD
         #if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zap_full_md
           path: report_md.md
