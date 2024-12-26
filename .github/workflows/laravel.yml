@@ -94,8 +94,8 @@ jobs:
 #           error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
 
 
-      - name: Disable Xdebug
-        run: sudo phpdismod xdebug
+      # - name: Disable Xdebug
+      #   run: sudo phpdismod xdebug
         # run: phpenmod -v $(phpenv version-name) -s cli -d xdebug.ini -d=xdebug.remote_enable=0 -d=xdebug.default_enable=0      
       - name: Run PHPStan      
         run: ./vendor/bin/phpstan analyse tests --error-format=github > reports/phpstan.json
