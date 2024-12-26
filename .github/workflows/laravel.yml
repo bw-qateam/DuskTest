@@ -72,12 +72,12 @@ jobs:
 
         
       - name: PHPUnit
-        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
+        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html reports/phpunit.html --filter=LoginTest tests
       - name: Upload PHPUnit results
         uses: actions/upload-artifact@v4
         with:
           name: phpunit
-          path: phpunit.html
+          path: reports/phpunit.html
       - name: Install PHPStan
         run: composer require --dev phpstan/phpstan
 #       - name: Check PHP version
@@ -93,7 +93,7 @@ jobs:
 #           level: 2
 #           error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --xdebug --debug --no-progress --error-format=prettyJson > phpstan.json
+        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --xdebug --debug --no-progress --error-format=prettyJson > reports/phpstan.json
         continue-on-error: true
 # #       - name: Test env var
 # #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
@@ -101,7 +101,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: phpstan
-          path: phpstan.json
+          path: reports/phpstan.json
 
 #       - name: List down directory
 #         run: ls
@@ -129,13 +129,13 @@ jobs:
       - name: Clear cache
         run: php artisan cache:clear
       - name: Artisan test
-        run: php artisan test > pa_test.html
+        run: php artisan test > reports/pa_test.html
       - name: Upload Artisan Test
         #if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: artisan
-          path: pa_test.html
+          path: reports/pa_test.html
         
         
         
