@@ -155,18 +155,18 @@ jobs:
           target: http://127.0.0.1:8000
           artifact_name: zap_scan_api # optional, default is zap_scan
 #            https://minxpay.vercel.app/#/sign-in
-      - name: Upload ZAP API Report - HTML
-        #if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: zap_html_api
-          path: report_html_api.html
-      - name: Upload ZAP API Report - MD
-        #if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: zap_md_api
-          path: report_md_api.md
+      # - name: Upload ZAP API Report - HTML
+      #   #if: failure()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: zap_html_api
+      #     path: report_html_api.html
+      # - name: Upload ZAP API Report - MD
+      #   #if: failure()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: zap_md_api
+      #     path: report_md_api.md
         
       # BASIC FULL SCAN
       - name: ZAP Full Scan
@@ -175,18 +175,18 @@ jobs:
           target: http://127.0.0.1:8000
           artifact_name: zap_scan_full # optional, default is zap_scan
 #            https://minxpay.vercel.app/#/sign-in            
-      - name: Upload ZAP Full Report - HTML
-        #if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: zap_html_full
-          path: report_html_full.html
-      - name: Upload ZAP Full Report - MD
-        #if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: zap_md_full
-          path: report_md_full.md
+      # - name: Upload ZAP Full Report - HTML
+      #   #if: failure()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: zap_html_full
+      #     path: report_html_full.html
+      # - name: Upload ZAP Full Report - MD
+      #   #if: failure()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: zap_md_full
+      #     path: report_md_full.md
         
   
   
