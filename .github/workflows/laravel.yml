@@ -153,40 +153,40 @@ jobs:
         uses: zaproxy/action-api-scan@v0.9.0
         with:
           target: http://127.0.0.1:8000
-          artifact_name: zap_api_scan # optional, default is zap_scan
+          artifact_name: zap_scan_api # optional, default is zap_scan
 #            https://minxpay.vercel.app/#/sign-in
       - name: Upload ZAP API Report - HTML
         #if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: zap_api_html
-          path: report_api_html.html
+          name: zap_html_api
+          path: report_html_api.html
       - name: Upload ZAP API Report - MD
         #if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: zap_api_md
-          path: report_api_md.md
+          name: zap_md_api
+          path: report_md_api.md
         
       # BASIC FULL SCAN
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.12.0
         with:
           target: http://127.0.0.1:8000
-          artifact_name: zap_full_scan # optional, default is zap_scan
+          artifact_name: zap_scan_full # optional, default is zap_scan
 #            https://minxpay.vercel.app/#/sign-in            
       - name: Upload ZAP Full Report - HTML
         #if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: zap_full_html
-          path: report_full_html.html
+          name: zap_html_full
+          path: report_html_full.html
       - name: Upload ZAP Full Report - MD
         #if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: zap_full_md
-          path: report_full_md.md
+          name: zap_md_full
+          path: report_md_full.md
         
   
   
