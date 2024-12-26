@@ -95,7 +95,7 @@ jobs:
 
 
       - name: Disable Xdebug
-        run: phpdismod xdebug
+        run: sudo phpdismod xdebug
         # run: phpenmod -v $(phpenv version-name) -s cli -d xdebug.ini -d=xdebug.remote_enable=0 -d=xdebug.default_enable=0      
       - name: Run PHPStan
         run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --debug --no-progress --error-format=prettyJson > reports/phpstan.json
