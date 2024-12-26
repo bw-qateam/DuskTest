@@ -93,8 +93,8 @@ jobs:
 #           level: 2
 #           error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --debug --no-progress --error-format=prettyJson > reports/phpstan.json
-        # run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --xdebug --debug --no-progress --error-format=prettyJson > reports/phpstan.json
+        # run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --debug --no-progress --error-format=prettyJson > reports/phpstan.json
+        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --xdebug --debug --no-progress --error-format=prettyJson > reports/phpstan.json
         continue-on-error: true
 # #       - name: Test env var
 # #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
