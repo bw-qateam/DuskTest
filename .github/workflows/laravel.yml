@@ -68,38 +68,48 @@ jobs:
         run: php artisan config:clear
       - name: Run Laravel Server
         run: php artisan serve --no-reload &
+
+
+
+
+
+
+      - name: PHPUnit (php-actions)
+        # You may pin to the exact commit or the version.
+        # uses: php-actions/phpunit@1789d1964b1bfda259b1cb42a72b65299c2cae35
+        uses: php-actions/phpunit@v4
         
-#       - name: PHPUnit
-#         run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
-#       - name: Upload PHPUnit results
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: phpunit
-#           path: phpunit.html
-#       - name: Install PHPStan
-#         run: composer require --dev phpstan/phpstan
-# #       - name: Check PHP version
-# #         run: php --version
-# #       - name: PHPStan
-# #         uses: php-actions/phpstan@v3
-# #         continue-on-error: true
-# #         with:
-# # #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
-# # #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
-# #           path: ./tests/Browser
-# #           memory_limit: 1G
-# #           level: 2
-# #           error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
-#       - name: Run PHPStan
-#         run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --xdebug --debug --no-progress --error-format=prettyJson > phpstan.json
+      - name: PHPUnit
+        run: ./vendor/bin/phpunit --do-not-cache-result --testdox-html phpunit.html --filter=LoginTest tests
+      - name: Upload PHPUnit results
+        uses: actions/upload-artifact@v4
+        with:
+          name: phpunit
+          path: phpunit.html
+      - name: Install PHPStan
+        run: composer require --dev phpstan/phpstan
+#       - name: Check PHP version
+#         run: php --version
+#       - name: PHPStan
+#         uses: php-actions/phpstan@v3
 #         continue-on-error: true
-# # #       - name: Test env var
-# # #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
-#       - name: Upload PHPStan results
-#         uses: actions/upload-artifact@v4
 #         with:
-#           name: phpstan
-#           path: phpstan.json
+# #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson tests
+# #          args: --memory-limit=1G --level=1 --no-progress --error-format=prettyJson > reports/phpstan-report.json tests
+#           path: ./tests/Browser
+#           memory_limit: 1G
+#           level: 2
+#           error_format: github #raw, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan analyse tests --memory-limit=1G --level=2 --xdebug --debug --no-progress --error-format=prettyJson > phpstan.json
+        continue-on-error: true
+# #       - name: Test env var
+# #         run: echo "${{ env.TEST_VAR1 }} ${{ vars.TEST_VAR }}"
+      - name: Upload PHPStan results
+        uses: actions/upload-artifact@v4
+        with:
+          name: phpstan
+          path: phpstan.json
 
 #       - name: List down directory
 #         run: ls
