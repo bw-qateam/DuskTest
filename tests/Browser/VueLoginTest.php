@@ -14,7 +14,9 @@ class VueLoginTest extends DuskTestCase
     public function testVueLogin(): void
     {
         $_ENV['APP_URL'] = 'https://minxpay.vercel.app/#/sign-in';
+
         $screenshot = 'VueLogin';
+
         $this->browse(function (Browser $browser) use ($screenshot) {
             $browser->maximize()
                 ->visit($_ENV['APP_URL'])
